@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\Workers;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class WorkersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = User::all();
-        return view("home.user.index", compact("user"));
+        $workers = Workers::with('strukturOrganisasi')->get();
+        return view('home.workers.index', compact('workers'));
     }
 
     /**
@@ -20,8 +21,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("home.user.tambah", );
-
+        $strukturOrganisasi = strukturOrganisasi::all(); // Perbaiki nama variabel
+        return view("home.produk.tambah", compact("strukturOrganisasi"));
     }
 
     /**
@@ -29,14 +30,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        user::create([
-            "name"=> $request->name,
-            "email"=> $request->email,
-            "password"=> bcrypt($request->password),
-            'role'=> $request->role,
-        ]);
-
-        return redirect('/user')->with('success', 'Berhasil Ditambahkan!');
+        //
     }
 
     /**
@@ -52,8 +46,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user= User::find($id);
-        return view("home.user.edit", compact("user"));
+        //
     }
 
     /**
@@ -61,9 +54,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user= User::find($id);
-        $user->update($request->all());
-        return redirect('/user')->with("success","Berhasil DiUpdate!");
+        //
     }
 
     /**
@@ -71,8 +62,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user= User::find($id);
-        $user->delete();
-        return redirect("/user")->with("success","Berhasil dIhapus!");
+        //
     }
 }

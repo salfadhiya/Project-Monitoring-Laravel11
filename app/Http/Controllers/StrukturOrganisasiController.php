@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class StrukturOrganisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = User::all();
-        return view("home.user.index", compact("user"));
+        $StrukturOrganisasi = StrukturOrganisasi::all();
+        return view("home.turor.index", compact("StrukturOrganisasi"));
     }
 
     /**
@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("home.user.tambah", );
+        return view("home.turor.tambah", );
 
     }
 
@@ -29,14 +29,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        user::create([
-            "name"=> $request->name,
-            "email"=> $request->email,
-            "password"=> bcrypt($request->password),
-            'role'=> $request->role,
+        StrukturOrganisasi::create([
+            "nama"=> $request->nama,
         ]);
 
-        return redirect('/user')->with('success', 'Berhasil Ditambahkan!');
+        return redirect('/turor')->with('success', 'Berhasil Ditambahkan!');
     }
 
     /**
@@ -52,8 +49,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user= User::find($id);
-        return view("home.user.edit", compact("user"));
+        //
     }
 
     /**
@@ -61,9 +57,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user= User::find($id);
-        $user->update($request->all());
-        return redirect('/user')->with("success","Berhasil DiUpdate!");
+        //
     }
 
     /**
@@ -71,8 +65,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user= User::find($id);
-        $user->delete();
-        return redirect("/user")->with("success","Berhasil dIhapus!");
+        $StrukturOrganisasi= StrukturOrganisasi::find($id);
+        $StrukturOrganisasi->delete();
+        return redirect("/turor")->with("success","Berhasil dIhapus!");
     }
 }

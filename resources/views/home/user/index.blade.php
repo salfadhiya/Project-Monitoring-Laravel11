@@ -39,14 +39,13 @@
                                     <a href="/user/{{$user->id}}/edit" class="btn btn-warning">
                                         <i class='bx bx-edit-alt'></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $user->id }}">
-                                        <i class='bx bx-trash'></i>
+                                        <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $user->id }}"> <i class='bx bx-trash'></i></a>
                                     </a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-
+                    </table>
                 </div>
             </div>
         </div>
