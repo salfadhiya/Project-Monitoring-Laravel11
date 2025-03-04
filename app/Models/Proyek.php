@@ -34,4 +34,9 @@ class Proyek extends Model
         'berakhir_pb' => 'date',
         'berakhir_k' => 'date',
     ];
+
+    public function struktur_organisasi()
+    {
+        return $this->belongsTo(StrukturOrganisasi::class, 'id_struktur','id');
+    }
 }

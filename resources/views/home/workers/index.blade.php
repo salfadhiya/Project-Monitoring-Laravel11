@@ -16,11 +16,15 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div>
+                        <a href="/turor" class="btn btn-secondary mb-3">KEMBALI</a>
+                    </div>
                     <table class="table table-stripped">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Jabatan</th>
+                                <th>Nama Proyek</th>
+                                <th>Jabatan</th>
                                 <th>Nama</th>
                                 <th>Aksi</th>
                             </tr>
@@ -29,14 +33,16 @@
                             @foreach ($workers as $w)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{ $w->strukturOrganisasi->nama ?? 'Tidak Ada Data' }}</td>
+                                <td>{{$w->struktur_organisasi->nama ?? 'Tidak Ada Data' }}</td>
+                                <td>{{$w->jabatan}}</td>
                                 <td>{{$w->nama}}</td>
                                 <td>
-                                    {{-- <a href="/Workers/{{$Workers->id}}/edit" class="btn btn-warning">
+                                    <a href="/workers/{{$w->id}}/edit" class="btn btn-warning">
                                         <i class='bx bx-edit-alt'></i>
                                     </a>
-                                        <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $Workers->id }}"> <i class='bx bx-trash'></i></a>
-                                    </a> --}}
+                                    <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $w->id }}">
+                                        <i class='bx bx-trash'></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
@@ -60,18 +66,29 @@
                 <form action="/workers/simpan" method="POST">
                     @csrf
 
+                    {{-- Ambil ID struktur dari URL --}}
+                    <input type="hidden" name="id_struktur" value="{{ request()->route('id') }}">
+
+                    {{-- Tampilkan Nama Struktur Organisasi --}}
+                    @if(isset($struktur))
+                        <div class="mb-3">
+                            <label class="form-label">Struktur Organisasi</label>
+                            <input type="text" class="form-control" value="{{ $struktur->nama }}" readonly>
+                        </div>
+                    @else
+                        <p class="text-danger">Struktur tidak ditemukan.</p>
+                    @endif
+
                     <div class="form-floating mb-3">
-                        <select required  name="id_workers" class="form-select" id="id_workers"
-                            aria-label="Floating label select example">
-                            <option selected>Pilih</option>
-                            @foreach ($strukturOrganisasi as $item)
-                            <option value="{{ $item->id }}">{{ $item->id }} - {{ $item->nama }}</option>
-                           @endforeach
-                        </select>
-                        <label for="floatingSelect">Nama Jabatan</label>
+                        <input required type="text" class="form-control" id="floatingInput" name="jabatan"
+                        placeholder="Masukkan Nama Jabatan">
+                        <label for="floatingInput">Nama Jabatan</label>
                     </div>
-
-
+                    <div class="form-floating mb-3">
+                        <input required type="text" class="form-control" id="floatingInput" name="nama"
+                        placeholder="Masukkan Nama">
+                        <label for="floatingInput">Nama</label>
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -82,5 +99,4 @@
         </div>
     </div>
 </div>
-
 @endsection

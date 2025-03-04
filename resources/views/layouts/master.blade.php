@@ -89,19 +89,18 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
-              <div class="navbar-nav align-items-center">
+            <!-- Search -->
+            <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
+                    <i class="bx bx-search fs-4 lh-0"></i>
+                    <input type="text" id="searchInput" class="form-control border-0 shadow-none" placeholder="Search...">
                 </div>
-              </div>
-              <!-- /Search -->
+            </div>
+            <!-- /Search -->
+
+            <!-- Tempat menampilkan hasil -->
+            <ul id="searchResults" class="list-group position-absolute bg-white shadow rounded" style="display: none; z-index: 1000; width: 200px;">
+            </ul>
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
@@ -255,6 +254,44 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#searchInput').on('keyup', function() {
+        let query = $(this).val();
+
+        if (query.length > 1) {
+            $.ajax({
+                url: "{{ route('global.search') }}",
+                type: "GET",
+                data: { query: query },
+                success: function(data) {
+                    if (data.length > 0) {
+                        let resultsHtml = "";
+                        data.forEach(item => {
+                            resultsHtml += `<li class="list-group-item"><a href="${item.url}">${item.name}</a></li>`;
+                        });
+                        $('#searchResults').html(resultsHtml).show();
+                    } else {
+                        $('#searchResults').hide();
+                    }
+                }
+            });
+        } else {
+            $('#searchResults').hide();
+        }
+    });
+
+    // Klik di luar untuk menutup dropdown
+    $(document).click(function(e) {
+        if (!$(e.target).closest('#searchInput').length) {
+            $('#searchResults').hide();
+        }
+    });
+});
+</script>
+
+
     <script>
         // Handling SweetAlert2 flash messages
         @if(session('success'))
@@ -306,7 +343,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll(".delete-btn").forEach(button => {
             button.addEventListener("click", function() {
-                let sId = this.getAttribute("data-id");
+                let workerId = this.getAttribute("data-id"); // Ambil ID worker dari tombol
 
                 Swal.fire({
                     title: "Apakah Anda yakin?",
@@ -319,13 +356,14 @@
                     cancelButtonText: "Batal"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "/turor/" + sId "/delete";
+                        // Redirect ke route delete
+                        window.location.href = "/workers/" + workerId + "/delete";
                     }
                 });
             });
         });
     });
-    </script>
+</script>
 
 
 

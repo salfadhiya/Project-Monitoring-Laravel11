@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
-
+use App\Models\StrukturOrganisasi;
 class ProyekController extends Controller
 {
     /**
@@ -11,8 +11,9 @@ class ProyekController extends Controller
      */
     public function index()
     {
-        $proyek = proyek::all();
-        return view("home.proyek.index", compact("proyek"));
+        $proyek = Proyek::with('struktur_organisasi')->get();
+        $struktur_organisasi = strukturOrganisasi::all(); // Perbaiki nama variabel
+        return view("home.proyek.index", compact("proyek", "struktur_organisasi"));
     }
 
     public function selengkapnya()
@@ -36,7 +37,7 @@ class ProyekController extends Controller
 {
     // Validasi data yang diterima dari form
     $request->validate([
-        'id_struktur'   => 'required|integer',
+        'id_struktur'   => 'nullable|integer',
         'nama'          => 'required|string|max:255',
         'posisi'        => 'nullable|string|max:255',
         'nomor'         => 'nullable|integer',
@@ -57,7 +58,7 @@ class ProyekController extends Controller
 
     // Simpan data ke database
     Proyek::create([
-        "id_struktur"   => $request->id_struktur,
+        "id_struktur"   => $request->id_struktur?? null,
         "nama"          => $request->nama,
         "posisi"        => $request->posisi?? null,
         "nomor"         => $request->nomor?? null,

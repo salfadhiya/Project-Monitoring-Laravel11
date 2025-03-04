@@ -13,23 +13,23 @@ return new class extends Migration
     {
         Schema::create('proyeks', function (Blueprint $table) {
             $table->id();
-            $table->integer("id_struktur");
+            $table->unsignedBigInteger('id_struktur')->nullable()->constrained('struktur_organisasis')->onDelete('cascade');
             $table->string("nama");
-            $table->string("posisi");
-            $table->string("nomor");
-            $table->integer("durasi");
-            $table->date("ttdkntrk");
-            $table->date("mulai_ek");
-            $table->date("berakhir_pb");
-            $table->date("berakhir_k");
-            $table->integer("nilai_kb");
-            $table->integer("nilai_kn");
-            $table->integer("hpp");
-            $table->integer("lababruto");
-            $table->string("jenisanggaran");
-            $table->string("cust");
-            $table->string("enduser");
-            $table->integer("masa_warranty");
+            $table->string("posisi")->nullable();
+            $table->string("nomor")->nullable();
+            $table->integer("durasi")->nullable();
+            $table->date("ttdkntrk")->nullable();
+            $table->date("mulai_ek")->nullable();
+            $table->date("berakhir_pb")->nullable();
+            $table->date("berakhir_k")->nullable();
+            $table->integer("nilai_kb")->nullable();
+            $table->integer("nilai_kn")->nullable();
+            $table->integer("hpp")->nullable();
+            $table->integer("lababruto")->nullable();
+            $table->string("jenisanggaran")->nullable();
+            $table->string("cust")->nullable();
+            $table->string("enduser")->nullable();
+            $table->integer("masa_warranty")->nullable();
             $table->timestamps();
         });
     }

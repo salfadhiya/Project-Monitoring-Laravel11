@@ -53,14 +53,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/Proyek/simpan" method="POST">
+                <form action="/proyek/simpan" method="POST">
                     @csrf
                     <div class="form-floating mb-3">
                         <input required type="text" class="form-control" id="floatingInput" name="nama"
                         placeholder="Masukkan Nama Proyek">
                         <label for="floatingInput">Nama Proyek</label>
                     </div>
-
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

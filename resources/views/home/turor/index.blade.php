@@ -7,7 +7,7 @@
         <div class="col-lg-12 mb-4 order-0">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="card-title text-uppercase fw-bold mb-0">Data Struktur Organisasi</h5>
+                    <h5 class="card-title text-uppercase fw-bold mb-0">Data Struktur Organisasi Proyek</h5>
                     <div>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahTurorModal">
                             <i class='bx bx-list-plus'></i>
@@ -20,8 +20,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Jabatan</th>
-                                <th>Aksi</th>
+                                <th>Nama Struktur Proyek</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,10 +28,13 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$s->nama}}</td>
-                                <td>
-                                    <a href="javascript:void(1)" class="btn btn-danger delete-btn" data-id="{{ $s->id }}"> <i class='bx bx-trash'></i></a>
-                                </a>
-                                </td>
+                                    <td>
+                                        <a href="/turor/{{$s->id}}/workers" class="btn btn-success">
+                                            <i class='bx bx-happy-alt'></i> Cek Workers
+                                        </a>
+                                    </td>
+
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -56,8 +58,8 @@
                     @csrf
                     <div class="form-floating mb-3">
                         <input required type="text" class="form-control" id="floatingInput" name="nama"
-                        placeholder="Masukkan Nama Jabatan">
-                        <label for="floatingInput">Nama Jabatan</label>
+                        placeholder="Masukkan Nama Struktur Proyek">
+                        <label for="floatingInput">Nama Struktur Proyek</label>
                     </div>
 
                     <div class="modal-footer">

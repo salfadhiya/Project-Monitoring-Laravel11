@@ -14,7 +14,7 @@ class Workers extends Model
         'nama',
     ];
 
-    public function strukturOrganisasi()
+    public function struktur_organisasi()
     {
         return $this->belongsTo(StrukturOrganisasi::class, 'id_struktur', 'id');
     }

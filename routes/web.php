@@ -5,11 +5,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProyekController;
 use App\Http\Controllers\StrukturOrganisasiController;
 use App\Http\Controllers\WorkersController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return view('home.dashboard');
 
 });
+
+Route::get('/search', [SearchController::class, 'globalSearch'])->name('global.search');
 
 //rut crud user
 Route::get('/user', [UserController::class,'index']);
@@ -22,12 +25,19 @@ Route::get('/user/{id}/delete', [UserController::class,'destroy']);
 //rut proyek
 Route::get('/proyek', [ProyekController::class,'index']);
 Route::get('/proyek/{id}/selengkapnya', [ProyekController::class,'selengkapnya']);
+Route::get('/proyek/tambah', [ProyekController::class,'create']);
+Route::post('/proyek/simpan', [ProyekController::class,'store']);
 
 //rut crud struktur organisasi
 Route::get('/turor', [StrukturOrganisasiController::class,'index']);
+Route::get('/turor/{id}/workers', [WorkersController::class,'index']);
 Route::get('/turor/tambah', [StrukturOrganisasiController::class,'create']);
 Route::post('/turor/simpan', [StrukturOrganisasiController::class,'store']);
-Route::get('/turor/{id}/delete', [StrukturOrganisasiController::class,'destroy']);
 
 //tur crud workers
-Route::get('/workers', [WorkersController::class,'index']);
+Route::get('/workers/{id}', [WorkersController::class,'index']);
+Route::get('/workers/{id}/tambah', [WorkersController::class, 'create']);
+Route::post('/workers/simpan', [WorkersController::class,'store']);
+Route::get('/workers/{id}/edit', [WorkersController::class,'edit']);
+Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Mengupdate data berdasarkan id
+Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);

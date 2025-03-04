@@ -111,11 +111,11 @@
                   <div data-i18n="Alerts">Struktur Organisasi</div>
                 </a>
               </li>
-            <li class="menu-item {{ Request::is('workers') ? 'active' : '' }}">
+            {{-- <li class="menu-item {{ Request::is('workers') ? 'active' : '' }}">
               <a href="/workers" class="menu-link">
                 <div data-i18n="Accordion">Workers</div>
               </a>
-            </li>
+            </li> --}}
 
             <li class="menu-item {{ Request::is('tasklist') ? 'active' : '' }}">
               <a href="/tasklist" class="menu-link">

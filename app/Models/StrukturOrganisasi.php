@@ -15,7 +15,13 @@ class StrukturOrganisasi extends Model
 
     public function workers()
     {
-  return $this->hasMany(workers::class, 'id_struktur', 'id');
+        return $this->hasMany(Workers::class, 'id_struktur', 'id');
     }
+
+    public function proyek()
+    {
+        return $this->hasMany(Proyek::class, 'id_struktur', 'id');
+    }
+
 
 }

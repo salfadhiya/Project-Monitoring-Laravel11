@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\StrukturOrganisasi;
+use App\Models\Workers;
 use Illuminate\Http\Request;
 
 class StrukturOrganisasiController extends Controller
@@ -14,6 +15,18 @@ class StrukturOrganisasiController extends Controller
         $StrukturOrganisasi = StrukturOrganisasi::all();
         return view("home.turor.index", compact("StrukturOrganisasi"));
     }
+
+    // public function indexworkers()
+    // {
+    //     $workers = workers::all();
+    //     return view("home.turor.workers", compact("workers"));
+    // }
+
+    // public function createworkers()
+    // {
+    //     $workers = workers::all();
+    //     return view("home.turor.tambah", compact("workers"));
+    // }
 
     /**
      * Show the form for creating a new resource.
