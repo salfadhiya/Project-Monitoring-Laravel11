@@ -21,6 +21,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nama Struktur Proyek</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,7 @@
                                         <a href="/turor/{{$s->id}}/workers" class="btn btn-success">
                                             <i class='bx bx-happy-alt'></i> Cek Workers
                                         </a>
+                    
                                     </td>
 
 

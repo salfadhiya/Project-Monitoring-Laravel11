@@ -37,10 +37,10 @@ class Proyek extends Model
         'berakhir_k' => 'date',
     ];
 
-    public function strukturOrganisasi()
+    public function struktur_organisasi()
     {
-        return $this->belongsTo(StrukturOrganisasi::class, 'struktur_organisasi_id');
-        // Pastikan 'struktur_organisasi_id' adalah foreign key yang benar di tabel `proyek`
+        return $this->belongsTo(StrukturOrganisasi::class, 'id_struktur', 'id');
     }
+
 
 }

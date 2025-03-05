@@ -23,85 +23,84 @@
                                     <div class="card-body">
                                         <h5 class="card-title text-center fw-bold mb-0">DATA PROYEK</h5>
                                         <br>
-                                        @foreach ($proyek as $p)
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
                                                     <th>ID STRUKTUR</th>
-
-                                                    @if($proyek->strukturOrganisasi)
-                                                    <p>Struktur Organisasi: {{ $proyek->strukturOrganisasi->nama }}</p>
-                                                @else
-                                                    <p>Struktur Organisasi: Tidak tersedia</p>
-                                                @endif                                                </tr>
+                                                    <td>
+                                                        @if($proyek->struktur_organisasi)
+                                                            <p>Struktur Organisasi: {{ $proyek->struktur_organisasi->nama }}</p>
+                                                        @else
+                                                            <p>Struktur Organisasi: Tidak tersedia</p>
+                                                        @endif
+                                                    </td>
+                                                </tr>
                                                 <tr>
                                                     <th>NAMA KONTRAK AWAL</th>
-                                                    <td>{{ $p->nama }}</td>
+                                                    <td>{{ $proyek->nama }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>POSISI DALAM KONTRAK</th>
-                                                    <td>{{ $p->posisi }}</td>
+                                                    <td>{{ $proyek->posisi }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>NO. KONTRAK</th>
-                                                    <td>{{ $p->nomor }}</td>
+                                                    <td>{{ $proyek->nomor }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>DURASI KONTRAK</th>
-                                                    <td>{{ $p->durasi }} Bulan</td>
+                                                    <td>{{ $proyek->durasi }} Bulan</td>
                                                 </tr>
                                                 <tr>
                                                     <th>TANGGAL TTD KONTRAK</th>
-                                                    <td>{{ $p->ttdkntrk }}</td>
+                                                    <td>{{ $proyek->ttdkntrk }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>TANGGAL MULAI EFEKTIF KONTRAK</th>
-                                                    <td>{{ $p->mulai_ek }}</td>
+                                                    <td>{{ $proyek->mulai_ek }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>TANGGAL BERAKHIR PENGIRIMAN BARANG</th>
-                                                    <td>{{ $p->berakhir_pb }}</td>
+                                                    <td>{{ $proyek->berakhir_pb }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>TANGGAL BERAKHIR KONTRAK</th>
-                                                    <td>{{ $p->berakhir_k }}</td>
+                                                    <td>{{ $proyek->berakhir_k }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>NILAI KONTRAK BRUTO (+Ppn)</th>
-                                                    <td>{{ number_format($p->nilai_kb, 0, ',', '.') }}</td>
+                                                    <td>{{ number_format($proyek->nilai_kb, 0, ',', '.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>NILAI KONTRAK NETTO</th>
-                                                    <td>{{ number_format($p->nilai_kn, 0, ',', '.') }}</td>
+                                                    <td>{{ number_format($proyek->nilai_kn, 0, ',', '.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>HPP (%)</th>
-                                                    <td>{{ $p->hpp }}%</td>
+                                                    <td>{{ $proyek->hpp }}%</td>
                                                 </tr>
                                                 <tr>
                                                     <th>LABA BRUTO (%)</th>
-                                                    <td>{{ $p->lababruto }}%</td>
+                                                    <td>{{ $proyek->lababruto }}%</td>
                                                 </tr>
                                                 <tr>
                                                     <th>JENIS ANGGARAN</th>
-                                                    <td>{{ $p->jenisanggaran }}</td>
+                                                    <td>{{ $proyek->jenisanggaran }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>CUSTOMER</th>
-                                                    <td>{{ $p->cust }}</td>
+                                                    <td>{{ $proyek->cust }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>END USER</th>
-                                                    <td>{{ $p->enduser }}</td>
+                                                    <td>{{ $proyek->enduser }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>MASA WARRANTY</th>
-                                                    <td>{{ $p->masa_warranty }} Bulan</td>
+                                                    <td>{{ $proyek->masa_warranty }} Bulan</td>
                                                 </tr>
                                             </tbody>
                                         </table>
-
-                                        @endforeach
                                     </div>
                                 </div>
                             </div>

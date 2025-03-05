@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('proyeks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_struktur')->nullable()->constrained('struktur_organisasis')->onDelete('cascade');
+            $table->integer('id_struktur')->nullable();
             $table->string("nama");
             $table->string("posisi")->nullable();
             $table->string("nomor")->nullable();
