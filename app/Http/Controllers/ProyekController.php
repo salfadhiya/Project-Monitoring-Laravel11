@@ -21,9 +21,6 @@ class ProyekController extends Controller
         $proyek = proyek::with('struktur_organisasi')->findOrFail($id);
         return view("home.proyek.selengkapnya", compact("proyek"));
     }
-
-
-
     /**
      * Show the form for creating a new resource.
      */
@@ -89,6 +86,12 @@ class ProyekController extends Controller
     return redirect('/proyek')->with('success', 'Proyek berhasil ditambahkan!');
 }
 
+    public function lengkapi(string $id)
+    {
+        $proyek = Proyek::findOrFail($id); // Pastikan data ditemukan
+        $struktur_organisasi = StrukturOrganisasi::all(); // Ambil semua data struktur organisasi
+        return view("home.proyek.lengkapi", compact("Proyek","StrukturOrganisasi"));
+    }
 
     /**
      * Display the specified resource.

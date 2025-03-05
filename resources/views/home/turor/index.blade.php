@@ -31,9 +31,9 @@
                                 <td>{{$s->nama}}</td>
                                     <td>
                                         <a href="/turor/{{$s->id}}/workers" class="btn btn-success">
-                                            <i class='bx bx-happy-alt'></i> Cek Workers
+                                            <i class='bx bx-happy-alt'></i> LIHAT WORKERS
                                         </a>
-                    
+
                                     </td>
 
 

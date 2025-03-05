@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-body">
                     <div>
+                        {{-- <a href="{{ route('proyek.lengkapi', $proyek->id) }}" class="btn btn-primary">Lengkapi Data</a> --}}
                         <a href="/proyek" class="btn btn-secondary mb-3">KEMBALI</a>
                     </div>
                     <div class="container mt-4">

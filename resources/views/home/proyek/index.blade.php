@@ -29,7 +29,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$p->nama}}</td>
                                 <td>
-                                    <a href="{{ route('proyek.selengkapnya', ['id' => $p->id]) }}" class="btn btn-primary">Selengkapnya</a>
+                                    <a href="{{ route('proyek.selengkapnya', ['id' => $p->id]) }}" class="btn btn-success">SELENGKAPNYA</a>
                                     {{-- </a>
                                         <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $proyek->id }}"> <i class='bx bx-trash'></i></a>
                                     </a> --}}
