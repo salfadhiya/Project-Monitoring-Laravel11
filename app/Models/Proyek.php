@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Proyek extends Model
 {
+    protected $table = 'proyeks'; // Sesuaikan dengan nama tabel
+
     use HasFactory;
     protected $fillable = [
         'id_struktur',
@@ -35,8 +37,10 @@ class Proyek extends Model
         'berakhir_k' => 'date',
     ];
 
-    public function struktur_organisasi()
+    public function strukturOrganisasi()
     {
-        return $this->belongsTo(StrukturOrganisasi::class, 'id_struktur','id');
+        return $this->belongsTo(StrukturOrganisasi::class, 'struktur_organisasi_id');
+        // Pastikan 'struktur_organisasi_id' adalah foreign key yang benar di tabel `proyek`
     }
+
 }

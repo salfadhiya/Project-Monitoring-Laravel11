@@ -14,7 +14,6 @@ class WorkersController extends Controller
     {
         $workers = Workers::where('id_struktur', $id)->with('struktur_organisasi')->get();
         $struktur = StrukturOrganisasi::findOrFail($id); // Ambil struktur berdasarkan ID
-
         return view('home.workers.index', compact('workers', 'struktur'));
     }
     /**

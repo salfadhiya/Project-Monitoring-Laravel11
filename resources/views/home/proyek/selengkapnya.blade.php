@@ -28,8 +28,12 @@
                                             <tbody>
                                                 <tr>
                                                     <th>ID STRUKTUR</th>
-                                                    <td>{{ $p->id_struktur }}</td>
-                                                </tr>
+
+                                                    @if($proyek->strukturOrganisasi)
+                                                    <p>Struktur Organisasi: {{ $proyek->strukturOrganisasi->nama }}</p>
+                                                @else
+                                                    <p>Struktur Organisasi: Tidak tersedia</p>
+                                                @endif                                                </tr>
                                                 <tr>
                                                     <th>NAMA KONTRAK AWAL</th>
                                                     <td>{{ $p->nama }}</td>

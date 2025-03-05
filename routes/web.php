@@ -24,7 +24,9 @@ Route::get('/user/{id}/delete', [UserController::class,'destroy']);
 
 //rut proyek
 Route::get('/proyek', [ProyekController::class,'index']);
-Route::get('/proyek/{id}/selengkapnya', [ProyekController::class,'selengkapnya']);
+// Route::get('/proyek/{id}/selengkapnya', [ProyekController::class,'selengkapnya']);
+Route::get('/proyek/selengkapnya/{id}', [ProyekController::class, 'selengkapnya'])->name('proyek.selengkapnya');
+
 Route::get('/proyek/tambah', [ProyekController::class,'create']);
 Route::post('/proyek/simpan', [ProyekController::class,'store']);
 

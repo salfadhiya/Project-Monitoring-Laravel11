@@ -11,16 +11,19 @@ class ProyekController extends Controller
      */
     public function index()
     {
-        $proyek = Proyek::with('struktur_organisasi')->get();
+        $proyek = Proyek::with('strukturOrganisasi')->get();
         $struktur_organisasi = strukturOrganisasi::all(); // Perbaiki nama variabel
         return view("home.proyek.index", compact("proyek", "struktur_organisasi"));
     }
 
-    public function selengkapnya()
+    public function selengkapnya($id)
     {
-        $proyek = proyek::all();
-        return view("home.proyek.selengkapnya", compact("proyek"));
+        $proyek = Proyek::with('strukturOrganisasi')->where('id', $id)->firstOrFail();
+
+    return view("home.proyek.selengkapnya", compact("proyek"));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
