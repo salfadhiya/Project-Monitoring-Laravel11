@@ -33,6 +33,7 @@
 
     <!-- Favicon -->
     {{-- <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -275,6 +276,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#id_struktur').select2({
+                placeholder: "-- Pilih Struktur --",
+                allowClear: true,
+                width: '100%'  // Pastikan dropdown sesuai dengan lebar input lain
+            });
+        });
+        </script>
+
+
+
 <script>
 $(document).ready(function() {
     $('#searchInput').on('keyup', function() {

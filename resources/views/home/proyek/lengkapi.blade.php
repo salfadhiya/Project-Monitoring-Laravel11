@@ -2,6 +2,13 @@
 @section('title', 'Lengkapi Data Proyek')
 @section('content')
 
+<style>
+    /* Agar select2 memiliki lebar yang sama dengan input */
+    .select2-container {
+        width: 100% !important;
+    }
+</style>
+
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-12 mb-4">
@@ -26,7 +33,7 @@
                             <!-- Struktur Organisasi -->
                             <div class="col-md-6 mb-3">
                                 <label for="id_struktur" class="form-label">Struktur Organisasi</label>
-                                <select name="id_struktur" id="id_struktur" class="form-control">
+                                <select name="id_struktur" id="id_struktur" class="form-select select2">
                                     <option value="">-- Pilih Struktur --</option>
                                     @foreach ($strukturOrganisasi as $struktur)
                                         <option value="{{ $struktur->id }}" {{ old('id_struktur', $proyek->id_struktur) == $struktur->id ? 'selected' : '' }}>
@@ -35,7 +42,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
 
 
                             <!-- Posisi dalam Kontrak -->
@@ -162,33 +168,11 @@
 </script>
 
 <script>
-    function formatPercentage(element) {
-        let value = element.value;
-
-        // Hanya izinkan angka dan koma, hapus karakter lain
-        value = value.replace(/[^0-9,]/g, '');
-
-        // Cegah lebih dari satu koma dalam input
-        let parts = value.split(',');
-        if (parts.length > 2) {
-            value = parts[0] + ',' + parts.slice(1).join('');
-        }
-
-        // Pastikan formatnya benar (tidak ada koma di awal/tanpa angka)
-        if (value.startsWith(',')) {
-            value = '0' + value; // Jika user input koma pertama, tambahkan 0 di depannya
-        }
-
-        // Batasi angka 0-100
-        let num = parseFloat(value.replace(',', '.'));
-        if (!isNaN(num)) {
-            if (num < 0) num = 0;
-            if (num > 100) num = 100;
-            element.value = num.toString().replace('.', ',');
-        } else {
-            element.value = value; // Jika bukan angka, tetap izinkan user mengetik
-        }
+    function formatInput(input) {
+        input.value = input.value.replace(',', '.'); // Mengubah koma jadi titik otomatis
     }
     </script>
+
+
 
 @endsection

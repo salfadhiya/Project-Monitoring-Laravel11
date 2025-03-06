@@ -24,8 +24,8 @@ return new class extends Migration
             $table->date("berakhir_k")->nullable();
             $table->integer("nilai_kb")->nullable();
             $table->integer("nilai_kn")->nullable();
-            $table->integer("hpp")->nullable();
-            $table->integer("lababruto")->nullable();
+            $table->decimal("hpp", 8, 2)->nullable(); // Ubah ke decimal
+            $table->decimal("lababruto", 8, 2)->nullable(); // Ubah ke decimal
             $table->string("jenisanggaran")->nullable();
             $table->string("cust")->nullable();
             $table->string("enduser")->nullable();

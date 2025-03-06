@@ -35,6 +35,8 @@ class Proyek extends Model
         'mulai_ek' => 'date',
         'berakhir_pb' => 'date',
         'berakhir_k' => 'date',
+        'hpp' => 'float',
+        'lababruto' => 'float',
     ];
 
     public function struktur_organisasi()
