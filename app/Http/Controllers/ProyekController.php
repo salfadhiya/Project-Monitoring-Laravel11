@@ -86,12 +86,21 @@ class ProyekController extends Controller
     return redirect('/proyek')->with('success', 'Proyek berhasil ditambahkan!');
 }
 
-    public function lengkapi(string $id)
-    {
-        $proyek = Proyek::findOrFail($id); // Pastikan data ditemukan
-        $struktur_organisasi = StrukturOrganisasi::all(); // Ambil semua data struktur organisasi
-        return view("home.proyek.lengkapi", compact("Proyek","StrukturOrganisasi"));
-    }
+    // public function lengkapi(string $id)
+    // {
+    //     $proyek = Proyek::findOrFail($id); // Pastikan data ditemukan
+    //     $struktur_organisasi = StrukturOrganisasi::all(); // Ambil semua data struktur organisasi
+    //     return view("home.proyek.lengkapi", compact("Proyek","StrukturOrganisasi"));
+    // }
+
+    public function edit($id)
+{
+    $proyek = Proyek::findOrFail($id);
+    $strukturOrganisasi = StrukturOrganisasi::all();
+    return view('home.proyek.lengkapi', compact('proyek', 'strukturOrganisasi'));
+}
+
+
 
     /**
      * Display the specified resource.
@@ -104,18 +113,20 @@ class ProyekController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $proyek = Proyek::findOrFail($id);
+        $proyek->update($request->all());
+
+        return redirect()->route('hoem.proyek.index')->with('success', 'Data proyek berhasil diperbarui!');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

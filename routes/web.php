@@ -27,7 +27,10 @@ Route::get('/proyek', [ProyekController::class,'index']);
 Route::get('/proyek/selengkapnya/{id}', [ProyekController::class, 'selengkapnya'])->name('proyek.selengkapnya');
 Route::get('/proyek/tambah', [ProyekController::class,'create']);
 Route::post('/proyek/simpan', [ProyekController::class,'store']);
-Route::get('/proyek/{id}/lengkapi', [ProyekController::class,'lengkapi']);
+// Route::get('/proyek/{id}/lengkapi', [ProyekController::class,'lengkapi']);
+Route::get('/proyek/{id}/lengkapi', [ProyekController::class, 'edit'])->name('proyek.lengkapi');
+Route::put('/proyek/{id}/update', [ProyekController::class, 'update'])->name('proyek.update');
+
 
 
 //rut crud struktur organisasi
