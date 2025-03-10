@@ -12,7 +12,6 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahWorkersModal">
                             <i class='bx bx-user-plus'></i>
                         </button>
-                        <a href="/workers/chart" class="btn btn-success"> LIHAT BAGAN
                         </a>
 
                     </div>
