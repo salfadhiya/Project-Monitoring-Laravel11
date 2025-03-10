@@ -90,4 +90,7 @@ class WorkersController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
+
+  
+
 }

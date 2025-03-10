@@ -38,6 +38,8 @@ Route::get('/turor', [StrukturOrganisasiController::class,'index']);
 Route::get('/turor/{id}/workers', [WorkersController::class,'index']);
 Route::get('/turor/tambah', [StrukturOrganisasiController::class,'create']);
 Route::post('/turor/simpan', [StrukturOrganisasiController::class,'store']);
+Route::get('/turor/{id}/bagan', [StrukturOrganisasiController::class, 'showBagan'])->name('turor.bagan');
+
 
 //tur crud workers
 Route::get('/workers/{id}', [WorkersController::class,'index']);
@@ -46,3 +48,4 @@ Route::post('/workers/simpan', [WorkersController::class,'store']);
 Route::get('/workers/{id}/edit', [WorkersController::class,'edit']);
 Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Mengupdate data berdasarkan id
 Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);
+

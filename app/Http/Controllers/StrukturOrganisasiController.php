@@ -16,6 +16,13 @@ class StrukturOrganisasiController extends Controller
         return view("home.turor.index", compact("StrukturOrganisasi"));
     }
 
+    public function showBagan($id)
+    {
+        $struktur = StrukturOrganisasi::with('workers')->findOrFail($id);
+        return view('home.turor.bagan', compact('struktur'));
+    }
+
+
     // public function indexworkers()
     // {
     //     $workers = workers::all();

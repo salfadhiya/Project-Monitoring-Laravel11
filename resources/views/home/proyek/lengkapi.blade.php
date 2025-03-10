@@ -149,7 +149,7 @@
 
                         <!-- Tombol Simpan & Kembali -->
                         <div class="text-end mt-3">
-                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                             <a href="javascript:history.back()" class="btn btn-secondary">Kembali</a>
                         </div>
                     </form>

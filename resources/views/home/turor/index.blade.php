@@ -33,6 +33,9 @@
                                         <a href="/turor/{{$s->id}}/workers" class="btn btn-success">
                                             <i class='bx bx-happy-alt'></i> LIHAT WORKERS
                                         </a>
+                                        <a href="{{ route('turor.bagan', ['id' => $s->id]) }}" class="btn btn-success">
+                                            LIHAT BAGAN
+                                        </a>
 
                                     </td>
 

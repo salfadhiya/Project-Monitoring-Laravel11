@@ -120,8 +120,34 @@ class ProyekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $proyek = Proyek::findOrFail($id);
-        $proyek->update($request->all());
+          // Validasi data
+    $validatedData = $request->validate([
+        'id_struktur' => 'nullable|integer',
+        'posisi' => 'nullable|string',
+        'nomor' => 'nullable|string',
+        'durasi' => 'nullable|integer',
+        'ttdkntrk' => 'nullable|date',
+        'mulai_ek' => 'nullable|date',
+        'berakhir_pb' => 'nullable|date',
+        'berakhir_k' => 'nullable|date',
+        'nilai_kb' => 'nullable|numeric',
+        'nilai_kn' => 'nullable|numeric',
+        'hpp' => 'nullable|numeric',
+        'lababruto' => 'nullable|numeric',
+        'jenisanggaran' => 'nullable|string',
+        'cust' => 'nullable|string',
+        'enduser' => 'nullable|string',
+        'masa_warranty' => 'nullable|integer',
+    ]);
+
+    // Debugging: Cek apakah data sudah benar sebelum disimpan
+    dd($validatedData);
+
+    // Cari data proyek berdasarkan ID
+    $proyek = Proyek::findOrFail($id);
+
+    // Update data proyek
+    $proyek->update($validatedData);
 
         return redirect()->route('hoem.proyek.index')->with('success', 'Data proyek berhasil diperbarui!');
     }
