@@ -6,20 +6,19 @@
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
                     <h5 class="card-title text-uppercase fw-bold mb-0">Data Workers</h5>
                     <div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahWorkersModal">
-                            <i class='bx bx-user-plus'></i>
+                        <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#tambahWorkersModal">
+                            <i class='bx bx-user-plus'></i> 
                         </button>
+                        <a href="/turor" class="btn btn-secondary shadow-sm">
+                            <i class="bx bx-arrow-back"></i> Kembali
                         </a>
-
                     </div>
                 </div>
+
                 <div class="card-body">
-                    <div>
-                        <a href="/turor" class="btn btn-secondary mb-3">KEMBALI</a>
-                    </div>
                     <table class="table table-stripped">
                         <thead>
                             <tr>

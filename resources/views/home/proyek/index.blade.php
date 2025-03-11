@@ -29,8 +29,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$p->nama}}</td>
                                 <td>
-                                    <a href="{{ route('proyek.selengkapnya', ['id' => $p->id]) }}" class="btn btn-success">SELENGKAPNYA</a>
-                                   
+                                    <a href="{{ route('proyek.selengkapnya', ['id' => $p->id]) }}" class="btn btn-success">  <i class='bx bx-right-arrow-alt'></i></a>
                                 </td>
                             </tr>
                             @endforeach

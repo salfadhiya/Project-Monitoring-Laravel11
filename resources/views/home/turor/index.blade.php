@@ -29,15 +29,15 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$s->nama}}</td>
-                                    <td>
-                                        <a href="/turor/{{$s->id}}/workers" class="btn btn-success">
-                                            <i class='bx bx-happy-alt'></i> LIHAT WORKERS
-                                        </a>
-                                        <a href="{{ route('turor.bagan', ['id' => $s->id]) }}" class="btn btn-success">
-                                            LIHAT BAGAN
-                                        </a>
+                                <td>
+                                    <a href="/turor/{{$s->id}}/workers" class="btn btn-success me-2">
+                                        <i class='bx bx-group'></i> Lihat Workers
+                                    </a>
+                                    <a href="{{ route('turor.bagan', ['id' => $s->id]) }}" class="btn btn-primary">
+                                        <i class='bx bx-network-chart'></i> Lihat Bagan
+                                    </a>
+                                </td>
 
-                                    </td>
 
 
                             </tr>
