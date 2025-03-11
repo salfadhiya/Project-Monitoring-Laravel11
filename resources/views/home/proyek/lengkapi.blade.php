@@ -47,36 +47,36 @@
                             <!-- Posisi dalam Kontrak -->
                             <div class="col-md-6 mb-3">
                                 <label for="posisi" class="form-label">Posisi dalam Kontrak</label>
-                                <input type="text" name="posisi" id="posisi" class="form-control" value="{{ old('posisi', $proyek->posisi) }}">
+                                <input type="text" name="posisi" placeholder="Masukkan posisi dalam kontrak"id="posisi" class="form-control" value="{{ old('posisi', $proyek->posisi) }}">
                             </div>
 
                             <!-- No. Kontrak -->
                             <div class="col-md-6 mb-3">
                                 <label for="nomor" class="form-label">No. Kontrak</label>
-                                <input type="text" name="nomor" id="nomor" class="form-control" value="{{ old('nomor', $proyek->nomor) }}">
+                                <input type="text" placeholder="Masukkan nomor kontrak" name="nomor" id="nomor" class="form-control" value="{{ old('nomor', $proyek->nomor) }}">
                             </div>
 
                             <!-- Durasi Kontrak -->
                             <div class="col-md-6 mb-3">
                                 <label for="durasi" class="form-label">Durasi Kontrak (Bulan)</label>
-                                <input type="number" name="durasi" id="durasi" class="form-control" value="{{ old('durasi', $proyek->durasi) }}">
+                                <input type="number" placeholder="Masukkan durasi kontrak dalam bulan" name="durasi" id="durasi" class="form-control" value="{{ old('durasi', $proyek->durasi) }}">
                             </div>
 
                             <div class="row">
                                 <!-- Tanggal dalam satu baris -->
                                 <div class="col-md-4 mb-3">
                                     <label for="ttdkntrk" class="form-label">Tanggal TTD Kontrak</label>
-                                    <input type="text" name="ttdkntrk" id="ttdkntrk" class="form-control datepicker" placeholder="Pilih Tanggal">
+                                    <input type="text" name="ttdkntrk" id="ttdkntrk" class="form-control datepicker" placeholder="Pilih tanggal">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="mulai_ek" class="form-label">Tanggal Mulai Efektif Kontrak</label>
-                                    <input type="text" name="mulai_ek" id="mulai_ek" class="form-control datepicker" placeholder="Pilih Tanggal">
+                                    <input type="text" name="mulai_ek" id="mulai_ek" class="form-control datepicker" placeholder="Pilih tanggal">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="berakhir_pb" class="form-label">Tanggal Berakhir Pengiriman Barang</label>
-                                    <input type="text" name="berakhir_pb" id="berakhir_pb" class="form-control datepicker" placeholder="Pilih Tanggal">
+                                    <input type="text" name="berakhir_pb" id="berakhir_pb" class="form-control datepicker" placeholder="Pilih tanggal">
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
                                         <span class="input-group-text">$</span>
                                         <input type="text" class="form-control" id="nilai_kb"
                                             name="nilai_kb" value="{{ old('nilai_kb', $proyek->nilai_kb) }}"
-                                            oninput="formatCurrency(this)" placeholder="Masukkan nilai kontrak">
+                                            oninput="formatCurrency(this)" placeholder="Masukkan nilai kontrak bruto">
                                     </div>
                                 </div>
 
@@ -98,7 +98,7 @@
                                         <span class="input-group-text">$</span>
                                         <input type="text" class="form-control" id="nilai_kontrak_netto"
                                             name="nilai_kontrak_netto" value="{{ old('nilai_kontrak_netto', $proyek->nilai_kontrak_netto) }}"
-                                            oninput="formatCurrency(this)" placeholder="Masukkan nilai kontrak">
+                                            oninput="formatCurrency(this)" placeholder="Masukkan nilai kontrak netto">
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                 <label for="lababruto" class="form-label">Laba Bruto (%)</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="lababruto" name="lababruto"
-                                        value="{{ old('lababruto', $proyek->lababruto) }}" oninput="formatPercentage(this)" placeholder="Masukkan Laba Bruto">
+                                        value="{{ old('lababruto', $proyek->lababruto) }}" oninput="formatPercentage(this)" placeholder="Masukkan laba bruto">
                                     <span class="input-group-text">%</span>
                                 </div>
                             </div>
@@ -126,24 +126,24 @@
                             <!-- Jenis Anggaran -->
                             <div class="col-md-6 mb-3">
                                 <label for="jenisanggaran" class="form-label">Jenis Anggaran</label>
-                                <input type="text" name="jenisanggaran" id="jenisanggaran" class="form-control" value="{{ old('jenisanggaran', $proyek->jenisanggaran) }}">
+                                <input type="text" placeholder="Masukkan jenis anggaran" name="jenisanggaran" id="jenisanggaran" class="form-control" value="{{ old('jenisanggaran', $proyek->jenisanggaran) }}">
                             </div>
 
                             <!-- Customer & End User -->
                             <div class="col-md-6 mb-3">
                                 <label for="cust" class="form-label">Customer</label>
-                                <input type="text" name="cust" id="cust" class="form-control" value="{{ old('cust', $proyek->cust) }}">
+                                <input type="text" placeholder="Masukkan custumer" name="cust" id="cust" class="form-control" value="{{ old('cust', $proyek->cust) }}">
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="enduser" class="form-label">End User</label>
-                                <input type="text" name="enduser" id="enduser" class="form-control" value="{{ old('enduser', $proyek->enduser) }}">
+                                <input type="text" placeholder="Masukkan enduser" name="enduser" id="enduser" class="form-control" value="{{ old('enduser', $proyek->enduser) }}">
                             </div>
 
                             <!-- Masa Warranty -->
                             <div class="col-md-6 mb-3">
                                 <label for="masa_warranty" class="form-label">Masa Warranty (Bulan)</label>
-                                <input type="number" name="masa_warranty" id="masa_warranty" class="form-control" value="{{ old('masa_warranty', $proyek->masa_warranty) }}">
+                                <input type="number" placeholder="Masukkan masa warranty" name="masa_warranty" id="masa_warranty" class="form-control" value="{{ old('masa_warranty', $proyek->masa_warranty) }}">
                             </div>
                         </div>
 
