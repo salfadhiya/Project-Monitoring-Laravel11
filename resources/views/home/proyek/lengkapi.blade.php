@@ -21,7 +21,7 @@
                         @csrf
                         @method('PUT')
 
-
+                        <div class="row">
                          <!-- Nama Kontrak Awal (Read-Only) -->
                         <div class="col-md-12 mb-3">
                             <label for="nama" class="form-label">Nama Kontrak Awal</label>
@@ -49,7 +49,8 @@
                                 <label for="posisi" class="form-label">Posisi dalam Kontrak</label>
                                 <input type="text" name="posisi" placeholder="Masukkan posisi dalam kontrak"id="posisi" class="form-control" value="{{ old('posisi', $proyek->posisi) }}">
                             </div>
-
+                        </div>
+                            <div class="row">
                             <!-- No. Kontrak -->
                             <div class="col-md-6 mb-3">
                                 <label for="nomor" class="form-label">No. Kontrak</label>
@@ -61,24 +62,44 @@
                                 <label for="durasi" class="form-label">Durasi Kontrak (Bulan)</label>
                                 <input type="number" placeholder="Masukkan durasi kontrak dalam bulan" name="durasi" id="durasi" class="form-control" value="{{ old('durasi', $proyek->durasi) }}">
                             </div>
-
-                            <div class="row">
-                                <!-- Tanggal dalam satu baris -->
-                                <div class="col-md-4 mb-3">
-                                    <label for="ttdkntrk" class="form-label">Tanggal TTD Kontrak</label>
-                                    <input type="text" name="ttdkntrk" id="ttdkntrk" class="form-control datepicker" placeholder="Pilih tanggal">
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="mulai_ek" class="form-label">Tanggal Mulai Efektif Kontrak</label>
-                                    <input type="text" name="mulai_ek" id="mulai_ek" class="form-control datepicker" placeholder="Pilih tanggal">
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="berakhir_pb" class="form-label">Tanggal Berakhir Pengiriman Barang</label>
-                                    <input type="text" name="berakhir_pb" id="berakhir_pb" class="form-control datepicker" placeholder="Pilih tanggal">
-                                </div>
                             </div>
+                            <div class="row">
+                                <!-- Setiap input berada dalam kolom dengan ukuran yang sama -->
+                                <div class="row">
+                                    <!-- Setiap input berada dalam kolom dengan ukuran yang sama -->
+                                    <div class="col-md-3 mb-3">
+                                        <label for="ttdkntrk" class="form-label">Tanggal TTD Kontrak</label>
+                                        <input type="text" name="ttdkntrk" id="ttdkntrk"
+                                               class="form-control datepicker"
+                                               placeholder="Pilih tanggal"
+                                               value="{{ old('ttdkntrk', $proyek->ttdkntrk ?? '') }}">
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label for="mulai_ek" class="form-label">Tanggal Mulai Efektif Kontrak</label>
+                                        <input type="text" name="mulai_ek" id="mulai_ek"
+                                               class="form-control datepicker"
+                                               placeholder="Pilih tanggal"
+                                               value="{{ old('mulai_ek', $proyek->mulai_ek ?? '') }}">
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label for="berakhir_pb" class="form-label">Tanggal Berakhir Pengiriman Barang</label>
+                                        <input type="text" name="berakhir_pb" id="berakhir_pb"
+                                               class="form-control datepicker"
+                                               placeholder="Pilih tanggal"
+                                               value="{{ old('berakhir_pb', $proyek->berakhir_pb ?? '') }}">
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label for="berakhir_k" class="form-label">Tanggal Berakhir Kontrak</label>
+                                        <input type="text" name="berakhir_k" id="berakhir_k"
+                                               class="form-control datepicker"
+                                               placeholder="Pilih tanggal"
+                                               value="{{ old('berakhir_k', $proyek->berakhir_k ?? '') }}">
+                                    </div>
+                                </div>
+                                </div>
 
                             <div class="row">
                                 <!-- Nilai Kontrak (Bruto & Netto) sejajar -->

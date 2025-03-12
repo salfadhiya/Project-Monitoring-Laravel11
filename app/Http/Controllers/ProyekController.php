@@ -141,7 +141,7 @@ class ProyekController extends Controller
     ]);
 
     // Debugging: Cek apakah data sudah benar sebelum disimpan
-    dd($validatedData);
+    // dd($validatedData);
 
     // Cari data proyek berdasarkan ID
     $proyek = Proyek::findOrFail($id);
@@ -149,8 +149,8 @@ class ProyekController extends Controller
     // Update data proyek
     $proyek->update($validatedData);
 
-        return redirect()->route('hoem.proyek.index')->with('success', 'Data proyek berhasil diperbarui!');
-    }
+    return redirect('/proyek')->with("success","Berhasil DiUpdate!");
+}
 
 
 

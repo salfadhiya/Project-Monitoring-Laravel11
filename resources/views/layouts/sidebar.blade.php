@@ -3,7 +3,7 @@
         {{-- logo sneat --}}
         <div class="container">
             <div class="logo">
-                <a href="/"><img src="../../assets/img/logo/pfplen.png" alt="Logo" width="120" height="auto"></a>
+                <a href="/"><img src="../../assets/img/logo/pdclogo.png" alt="Logo" width="250" height="auto"></a>
             </div>
         </div>
 

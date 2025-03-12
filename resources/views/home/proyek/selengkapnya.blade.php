@@ -55,16 +55,21 @@
                                             </tr>
                                             <tr>
                                                 <th>TANGGAL TTD KONTRAK</th>
-                                                <td>{{ $proyek->ttdkntrk }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($proyek->ttdkntrk)->format('Y-m-d') }}</td>
                                             </tr>
                                             <tr>
                                                 <th>TANGGAL MULAI EFEKTIF</th>
-                                                <td>{{ $proyek->mulai_ek }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($proyek->mulai_ek)->format('Y-m-d') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>TANGGAL BERAKHIR PENGIRIMAN</th>
+                                                <td>{{ \Carbon\Carbon::parse($proyek->berakhir_pb)->format('Y-m-d') }}</td>
                                             </tr>
                                             <tr>
                                                 <th>TANGGAL BERAKHIR KONTRAK</th>
-                                                <td>{{ $proyek->berakhir_k }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($proyek->berakhir_k)->format('Y-m-d') }}</td>
                                             </tr>
+
                                             <tr>
                                                 <th>NILAI KONTRAK BRUTO</th>
                                                 <td>Rp {{ number_format($proyek->nilai_kb, 0, ',', '.') }}</td>

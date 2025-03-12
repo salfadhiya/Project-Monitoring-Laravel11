@@ -32,7 +32,6 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    {{-- <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" /> --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Fonts -->
