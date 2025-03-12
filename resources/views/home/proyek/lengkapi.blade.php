@@ -102,7 +102,7 @@
                                 </div>
 
                             <div class="row">
-                                <!-- Nilai Kontrak (Bruto & Netto) sejajar -->
+                                <!-- Nilai Kontrak Bruto -->
                                 <div class="col-md-6 mb-3">
                                     <label for="nilai_kb" class="form-label">Nilai Kontrak Bruto (+PPN)</label>
                                     <div class="input-group">
@@ -113,23 +113,25 @@
                                     </div>
                                 </div>
 
+                                <!-- Nilai Kontrak Netto -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="nilai_kontrak_netto" class="form-label">Nilai Kontrak Netto</label>
+                                    <label for="nilai_kn" class="form-label">Nilai Kontrak Netto</label>
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="text" class="form-control" id="nilai_kontrak_netto"
-                                            name="nilai_kontrak_netto" value="{{ old('nilai_kontrak_netto', $proyek->nilai_kontrak_netto) }}"
+                                        <input type="text" class="form-control" id="nilai_kn"
+                                            name="nilai_kn" value="{{ old('nilai_kn', $proyek->nilai_kn) }}"
                                             oninput="formatCurrency(this)" placeholder="Masukkan nilai kontrak netto">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                           <!-- HPP (%) -->
+                            <!-- HPP (%) -->
                             <div class="col-md-6 mb-3">
                                 <label for="hpp" class="form-label">HPP (%)</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="hpp" name="hpp"
-                                        value="{{ old('hpp', $proyek->hpp) }}" oninput="formatPercentage(this)" placeholder="Masukkan HPP">
+                                        value="{{ old('hpp', $proyek->hpp) }}" oninput="formatPercentage(this)"
+                                        placeholder="Masukkan HPP">
                                     <span class="input-group-text">%</span>
                                 </div>
                             </div>
@@ -139,11 +141,11 @@
                                 <label for="lababruto" class="form-label">Laba Bruto (%)</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="lababruto" name="lababruto"
-                                        value="{{ old('lababruto', $proyek->lababruto) }}" oninput="formatPercentage(this)" placeholder="Masukkan laba bruto">
+                                        value="{{ old('lababruto', $proyek->lababruto) }}" oninput="formatPercentage(this)"
+                                        placeholder="Masukkan laba bruto">
                                     <span class="input-group-text">%</span>
                                 </div>
                             </div>
-
                             <!-- Jenis Anggaran -->
                             <div class="col-md-6 mb-3">
                                 <label for="jenisanggaran" class="form-label">Jenis Anggaran</label>
@@ -186,19 +188,63 @@
 </div>
 
 <script>
+    // Improved currency formatting function
     function formatCurrency(element) {
-        let value = element.value.replace(/\D/g, ""); // Hapus semua karakter non-digit
-        value = new Intl.NumberFormat("en-US").format(value); // Format angka sesuai format US Dollar
+        // Store the original value without formatting for submission
+        let rawValue = element.value.replace(/[^\d]/g, "");
+
+        // Store raw value in a hidden field with the same name
+        let hiddenInput = document.getElementById(element.id + '_raw');
+        if (hiddenInput) {
+            hiddenInput.value = rawValue;
+        }
+
+        // Format for display with commas
+        if (rawValue !== "") {
+            element.value = new Intl.NumberFormat("en-US").format(rawValue);
+        }
+    }
+
+    // Improved percentage formatting function
+    function formatPercentage(element) {
+        // Replace comma with period for decimal separator
+        let value = element.value.replace(',', '.');
+
+        // Remove any non-numeric characters except decimal point
+        value = value.replace(/[^\d.]/g, '');
+
+        // Ensure only one decimal point
+        let parts = value.split('.');
+        if (parts.length > 2) {
+            value = parts[0] + '.' + parts.slice(1).join('');
+        }
+
+        // Update the visible input
         element.value = value;
+
+        // Update the hidden input with the same name for form submission
+        let hiddenInput = document.getElementById(element.id + '_raw');
+        if (hiddenInput) {
+            hiddenInput.value = value;
+        }
     }
+
+    // Process all formatted inputs before form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            // For currency fields - replace hidden input values
+            document.querySelectorAll('input[oninput="formatCurrency(this)"]').forEach(function(input) {
+                input.value = input.value.replace(/,/g, '');
+            });
+
+            // For percentage fields
+            document.querySelectorAll('input[oninput="formatPercentage(this)"]').forEach(function(input) {
+                input.value = input.value.replace(',', '.');
+            });
+        });
+    });
 </script>
-
-<script>
-    function formatInput(input) {
-        input.value = input.value.replace(',', '.'); // Mengubah koma jadi titik otomatis
-    }
-    </script>
-
 
 
 @endsection

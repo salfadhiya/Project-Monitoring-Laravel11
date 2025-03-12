@@ -30,6 +30,10 @@
                                 <td>{{$p->nama}}</td>
                                 <td>
                                     <a href="{{ route('proyek.selengkapnya', ['id' => $p->id]) }}" class="btn btn-success">  <i class='bx bx-right-arrow-alt'></i></a>
+                                    <a href="{{ route('proyek.delivery', ['id' => $p->id]) }}" class="btn btn-warning">
+                                        <i class='bx bx-package'></i>
+                                    </a>
+
                                 </td>
                             </tr>
                             @endforeach

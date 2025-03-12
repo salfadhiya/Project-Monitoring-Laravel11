@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\StrukturOrganisasi;
 class ProyekController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $proyek = Proyek::all();
@@ -21,17 +19,7 @@ class ProyekController extends Controller
         $proyek = proyek::with('struktur_organisasi')->findOrFail($id);
         return view("home.proyek.selengkapnya", compact("proyek"));
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view("home.proyek.tambah", );
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
 {
     // Validasi data yang diterima dari form
@@ -45,8 +33,8 @@ class ProyekController extends Controller
         'mulai_ek'      => 'nullable|date',
         'berakhir_pb'   => 'nullable|date',
         'berakhir_k'    => 'nullable|date',
-        'nilai_kb'      => 'nullable|numeric',
-        'nilai_kn'      => 'nullable|numeric',
+        'nilai_kb'      => 'nullable|integer',
+        'nilai_kn'      => 'nullable|integer',
         'hpp'           => 'nullable|numeric',
         'lababruto'     => 'nullable|numeric',
         'jenisanggaran' => 'nullable|string|max:255',
@@ -57,41 +45,28 @@ class ProyekController extends Controller
 
     // Simpan data ke database
     Proyek::create([
-        "id_struktur"   => $request->id_struktur?? null,
+        "id_struktur"   => $request->id_struktur,
         "nama"          => $request->nama,
-        "posisi"        => $request->posisi?? null,
-        "nomor"         => $request->nomor?? null,
-        "durasi"        => $request->durasi?? null,
-        "ttdkntrk"      => $request->ttdkntrk?? null,
-        "mulai_ek"      => $request->mulai_ek?? null,
-        "berakhir_pb"   => $request->berakhir_pb?? null,
-        "berakhir_k"    => $request->berakhir_k?? null,
-        "nilai_kb"      => $request->nilai_kb?? null,
-        "nilai_kn"      => $request->nilai_kn?? null,
-        "hpp"           => $request->hpp?? null,
-        "lababruto"     => $request->lababruto?? null,
-        "jenisanggaran" => $request->jenisanggaran?? null,
-        "cust"          => $request->cust?? null,
-        "enduser"       => $request->enduser?? null,
-        "masa_warranty" => $request->masa_warranty?? null,
+        "posisi"        => $request->posisi,
+        "nomor"         => $request->nomor,
+        "durasi"        => $request->durasi,
+        "ttdkntrk"      => $request->ttdkntrk,
+        "mulai_ek"      => $request->mulai_ek,
+        "berakhir_pb"   => $request->berakhir_pb,
+        "berakhir_k"    => $request->berakhir_k,
+        "nilai_kb"      => $request->nilai_kb,
+        "nilai_kn"      => $request->nilai_kn,
+        "hpp"           => $request->hpp,
+        "lababruto"     => $request->lababruto,
+        "jenisanggaran" => $request->jenisanggaran,
+        "cust"          => $request->cust,
+        "enduser"       => $request->enduser,
+        "masa_warranty" => $request->masa_warranty,
     ]);
-
-    // $proyek->update([
-    //     "id_struktur" => $proyek->id
-    // ]);
-
-
 
     // Redirect kembali ke halaman proyek dengan pesan sukses
     return redirect('/proyek')->with('success', 'Proyek berhasil ditambahkan!');
 }
-
-    // public function lengkapi(string $id)
-    // {
-    //     $proyek = Proyek::findOrFail($id); // Pastikan data ditemukan
-    //     $struktur_organisasi = StrukturOrganisasi::all(); // Ambil semua data struktur organisasi
-    //     return view("home.proyek.lengkapi", compact("Proyek","StrukturOrganisasi"));
-    // }
 
     public function edit($id)
 {
@@ -100,65 +75,58 @@ class ProyekController extends Controller
     return view('home.proyek.lengkapi', compact('proyek', 'strukturOrganisasi'));
 }
 
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
-          // Validasi data
-    $validatedData = $request->validate([
-        'id_struktur' => 'nullable|integer',
-        'posisi' => 'nullable|string',
-        'nomor' => 'nullable|string',
-        'durasi' => 'nullable|integer',
-        'ttdkntrk' => 'nullable|date',
-        'mulai_ek' => 'nullable|date',
-        'berakhir_pb' => 'nullable|date',
-        'berakhir_k' => 'nullable|date',
-        'nilai_kb' => 'nullable|numeric',
-        'nilai_kn' => 'nullable|numeric',
-        'hpp' => 'nullable|numeric',
-        'lababruto' => 'nullable|numeric',
-        'jenisanggaran' => 'nullable|string',
-        'cust' => 'nullable|string',
-        'enduser' => 'nullable|string',
-        'masa_warranty' => 'nullable|integer',
-    ]);
+        // Validasi data
+        $validatedData = $request->validate([
+            'id_struktur' => 'nullable|integer',
+            'posisi' => 'nullable|string',
+            'nomor' => 'nullable|string',
+            'durasi' => 'nullable|integer',
+            'ttdkntrk' => 'nullable|date',
+            'mulai_ek' => 'nullable|date',
+            'berakhir_pb' => 'nullable|date',
+            'berakhir_k' => 'nullable|date',
+            'nilai_kb' => 'nullable|numeric',
+            'nilai_kn' => 'nullable|numeric',
+            'hpp' => 'nullable|numeric',
+            'lababruto' => 'nullable|numeric',
+            'jenisanggaran' => 'nullable|string',
+            'cust' => 'nullable|string',
+            'enduser' => 'nullable|string',
+            'masa_warranty' => 'nullable|integer',
+        ]);
 
-    // Debugging: Cek apakah data sudah benar sebelum disimpan
-    // dd($validatedData);
+        // Clean numeric inputs
+        if (isset($validatedData['nilai_kb'])) {
+            $validatedData['nilai_kb'] = str_replace(',', '', $validatedData['nilai_kb']);
+        }
 
-    // Cari data proyek berdasarkan ID
-    $proyek = Proyek::findOrFail($id);
+        if (isset($validatedData['nilai_kn'])) {
+            $validatedData['nilai_kn'] = str_replace(',', '', $validatedData['nilai_kn']);
+        }
 
-    // Update data proyek
-    $proyek->update($validatedData);
+        if (isset($validatedData['hpp'])) {
+            $validatedData['hpp'] = str_replace(',', '.', $validatedData['hpp']);
+        }
 
-    return redirect('/proyek')->with("success","Berhasil DiUpdate!");
-}
+        if (isset($validatedData['lababruto'])) {
+            $validatedData['lababruto'] = str_replace(',', '.', $validatedData['lababruto']);
+        }
 
+        $proyek = Proyek::findOrFail($id);
 
+        // Update proyek
+        $proyek->update($validatedData);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect('/proyek')->with("success","Berhasil DiUpdate!");
     }
+
+    public function delivery($id)
+    {
+        $proyek = proyek::with('struktur_organisasi')->findOrFail($id);
+        return view("home.proyek.selengkapnya", compact("proyek"));
+
+
+}
 }

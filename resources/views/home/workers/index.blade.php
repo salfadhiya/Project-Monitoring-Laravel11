@@ -10,7 +10,7 @@
                     <h5 class="card-title text-uppercase fw-bold mb-0">Data Workers</h5>
                     <div>
                         <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#tambahWorkersModal">
-                            <i class='bx bx-user-plus'></i> 
+                            <i class='bx bx-user-plus'></i>
                         </button>
                         <a href="/turor" class="btn btn-secondary shadow-sm">
                             <i class="bx bx-arrow-back"></i> Kembali
@@ -79,11 +79,33 @@
                         <p class="text-danger">Struktur tidak ditemukan.</p>
                     @endif
 
-                    <div class="form-floating mb-3">
-                        <input required type="text" class="form-control" id="floatingInput" name="jabatan"
-                        placeholder="Masukkan Nama Jabatan">
-                        <label for="floatingInput">Nama Jabatan</label>
+
+                    <div class="">
+                        <label for="jabatan" class="form-label">Jabatan</label>
+                        <select name="jabatan" id="jabatan" class="form-select select2">
+                            <option value="">-- Pilih Jabatan --</option>
+                            <option value="pimpro">pimpro</option>
+                            <option value="project controller">project controller</option>
+                            <option value="account manager">account manager</option>
+                            <option value="project engineering manager 1">project engineering manager 1</option>
+                            <option value="principle managemant">principle managemant</option>
+                            <option value="ils managemant">ils managemant</option>
+                            <option value="project admin">project admin</option>
+                            <option value="quality assurance">quality assurance</option>
+                            <option value="hse">hse</option>
+                            <option value="site manager">site manager</option>
+                            <option value="installation technician">installation technician</option>
+                            <option value="technical manager">technical manager</option>
+                            <option value="drafter">drafter</option>
+                            <option value="software engineer">software engineer</option>
+                            <option value="system engineer">system engineer</option>
+                            <option value="network engineer">network engineer</option>
+                            <option value="production engineer">production engineer</option>
+                            <option value="mechanical engineer">mechanical engineer</option>
+                        </select>
                     </div>
+                    <br>
+
                     <div class="form-floating mb-3">
                         <input required type="text" class="form-control" id="floatingInput" name="nama"
                         placeholder="Masukkan Nama">

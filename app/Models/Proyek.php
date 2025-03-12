@@ -44,5 +44,10 @@ class Proyek extends Model
         return $this->belongsTo(StrukturOrganisasi::class, 'id_struktur', 'id');
     }
 
+    public function delivery()
+    {
+        return $this->hasMany(delivery::class, 'id_proyek', 'id');
+    }
+
 
 }

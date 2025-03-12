@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeliveryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProyekController;
@@ -31,15 +32,12 @@ Route::post('/proyek/simpan', [ProyekController::class,'store']);
 Route::get('/proyek/{id}/lengkapi', [ProyekController::class, 'edit'])->name('proyek.lengkapi');
 Route::put('/proyek/{id}/update', [ProyekController::class, 'update'])->name('proyek.update');
 
-
-
 //rut crud struktur organisasi
 Route::get('/turor', [StrukturOrganisasiController::class,'index']);
 Route::get('/turor/{id}/workers', [WorkersController::class,'index']);
 Route::get('/turor/tambah', [StrukturOrganisasiController::class,'create']);
 Route::post('/turor/simpan', [StrukturOrganisasiController::class,'store']);
 Route::get('/turor/{id}/bagan', [StrukturOrganisasiController::class, 'showBagan'])->name('turor.bagan');
-
 
 //tur crud workers
 Route::get('/workers/{id}', [WorkersController::class,'index']);
@@ -49,3 +47,4 @@ Route::get('/workers/{id}/edit', [WorkersController::class,'edit']);
 Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Mengupdate data berdasarkan id
 Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);
 
+Route::get('/proyek/delivery/{id}', [DeliveryController::class, 'index'])->name('proyek.delivery');
