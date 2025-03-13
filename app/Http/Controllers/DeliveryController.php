@@ -12,10 +12,10 @@ class DeliveryController extends Controller
      */
     public function index($id)
     {
-        $delivery = delivery::with('proyek')->findOrFail($id);
-        return view("home.proyek.delivery", compact("delivery", ));
+        $proyek = Proyek::findOrFail($id);
+        $delivery = Delivery::where('id_proyek', $id)->first();
+        return view("home.proyek.delivery", compact("proyek", "delivery"));
     }
-
     /**
      * Show the form for creating a new resource.
      */

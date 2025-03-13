@@ -9,7 +9,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title text-uppercase fw-bold mb-0">Data User</h5>
                     <div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUserModal">
+                        <button type="button" class="btn btn-primary"  data-bs-toggle="offcanvas" data-bs-target="#tambahUserCanvas">
                             <i class='bx bx-user-plus'></i>
                         </button>
 
@@ -51,52 +51,55 @@
         </div>
     </div>
 </div>
-
-{{-- modals tambah --}}
-<div class="modal fade" id="tambahUserModal" tabindex="-1" aria-labelledby="tambahUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold" id="tambahUserModalLabel">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Offcanvas Tambah Data -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="tambahUserCanvas" aria-labelledby="tambahUserCanvasLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="tambahUserCanvasLabel">Tambah Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="/user/simpan" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class='bx bx-user-pin'></i></span>
+                    <input required type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama">
+                </div>
             </div>
-            <div class="modal-body">
-                <form action="/user/simpan" method="POST">
-                    @csrf
-                    <div class="form-floating mb-3">
-                        <input required type="text" class="form-control" id="floatingInput" name="name"
-                        placeholder="Masukkan Nama">
-                        <label for="floatingInput">Nama</label>
-                    </div>
 
-                    <div class="form-floating mb-3">
-                        <input required type="email" class="form-control" id="floatingInput" name="email"
-                            placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input required type="password" class="form-control" id="floatingPassword" name="password"
-                            placeholder="Masukkan Kata Sandi">
-                        <label for="floatingPassword">Password</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <select required name="role" class="form-select" id="floatingSelect"
-                            aria-label="Floating label select example">
-                            <option selected>Pilih</option>
-                            <option value="ADMIN">ADMIN</option>
-                        </select>
-                        <label for="floatingSelect">Role</label>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success">Simpan Data</button>
-                    </div>
-                </form>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class='bx bx-envelope' ></i></span>
+                    <input required type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                </div>
             </div>
-        </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class='bx bx-hide' ></i></span>
+                    <input required type="password" class="form-control" id="password" name="password" placeholder="Masukkan Kata Sandi">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class='bx bx-group' ></i></i></span>
+                    <select required name="role" class="form-select" id="role">
+                        <option selected>Pilih</option>
+                        <option value="ADMIN">ADMIN</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Simpan Data</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Batal</button>
+            </div>
+        </form>
     </div>
 </div>
 

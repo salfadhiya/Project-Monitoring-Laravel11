@@ -47,4 +47,4 @@ Route::get('/workers/{id}/edit', [WorkersController::class,'edit']);
 Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Mengupdate data berdasarkan id
 Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);
 
-Route::get('/proyek/delivery/{id}', [DeliveryController::class, 'index'])->name('proyek.delivery');
+Route::get('/proyek/{id}/delivery', [DeliveryController::class, 'index'])->name('proyek.delivery');
