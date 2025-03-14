@@ -366,6 +366,32 @@ $(document).ready(function() {
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".delivery-delete-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let deliveryId = this.getAttribute("data-id"); // Ambil ID delivery dari tombol
+
+                Swal.fire({
+                    title: "Apakah Anda yakin?",
+                    text: "Data delivery akan dihapus dan tidak bisa dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, hapus!",
+                    cancelButtonText: "Batal"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect ke route delete
+                        window.location.href = "/delivery/" + deliveryId + "/delete";
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll(".delete-btn").forEach(button => {
             button.addEventListener("click", function() {
                 let workerId = this.getAttribute("data-id"); // Ambil ID worker dari tombol
