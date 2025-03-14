@@ -62,12 +62,6 @@
                   <div data-i18n="Alerts">Struktur Organisasi</div>
                 </a>
               </li>
-            {{-- <li class="menu-item {{ Request::is('workers') ? 'active' : '' }}">
-              <a href="/workers" class="menu-link">
-                <div data-i18n="Accordion">Workers</div>
-              </a>
-            </li> --}}
-
             <li class="menu-item {{ Request::is('tasklist') ? 'active' : '' }}">
               <a href="/tasklist" class="menu-link">
                 <div data-i18n="Alerts">Task List</div>
@@ -75,7 +69,15 @@
             </li>
           </ul>
         </li>
+        <li class="menu-item {{ Request::is('delivery') ? 'active' : '' }}">
+            <a href="/delivery" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-package"></i>
+              <div data-i18n="Basic">Deliveryable</div>
+            </a>
+          </li>
       </ul>
+
+
 
       {{-- <!-- Misc -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>

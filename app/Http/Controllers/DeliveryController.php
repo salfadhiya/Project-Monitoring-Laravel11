@@ -16,6 +16,12 @@ class DeliveryController extends Controller
         $delivery = Delivery::where('id_proyek', $id)->first();
         return view("home.proyek.delivery", compact("proyek", "delivery"));
     }
+
+    public function del()
+    {
+        $delivery = delivery::all();
+        return view("home.delivery.index", compact("delivery"));
+    }
     /**
      * Show the form for creating a new resource.
      */

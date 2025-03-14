@@ -48,3 +48,6 @@ Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Men
 Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);
 
 Route::get('/proyek/{id}/delivery', [DeliveryController::class, 'index'])->name('proyek.delivery');
+
+
+Route::get('/delivery', [DeliveryController::class,'del']);
