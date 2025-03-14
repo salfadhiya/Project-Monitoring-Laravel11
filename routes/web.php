@@ -48,5 +48,3 @@ Route::put('/workers/update/{id}', [WorkersController::class, 'update']); // Men
 Route::get('/workers/{id}/delete', [WorkersController::class,'destroy']);
 
 Route::get('/proyek/{id}/delivery', [DeliveryController::class, 'index'])->name('proyek.delivery');
-Route::post('/proyek/delivery/simpan', [DeliveryController::class, 'store']);
-Route::get('/delivery/{id}/delete', [DeliveryController::class, 'destroy'])->name('delivery.delete');
