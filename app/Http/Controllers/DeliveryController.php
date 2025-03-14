@@ -13,7 +13,7 @@ class DeliveryController extends Controller
     public function index($id)
     {
         $proyek = Proyek::findOrFail($id);
-        $delivery = Delivery::where('id_proyek', $id)->first();
+        $delivery = Delivery::where('id_proyek', $id)->get();
         return view("home.proyek.delivery", compact("proyek", "delivery"));
     }
     /**
@@ -29,9 +29,20 @@ class DeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'id_proyek'   => 'nullable|integer',
+            'nama'        => 'required|string|max:255',
+        ]);
 
+        // Simpan data ke database
+        Delivery::create([
+            "id_proyek"   => $request->id_proyek,
+            "nama"        => $request->nama,
+        ]);
+
+        // Redirect kembali ke halaman proyek dengan pesan sukses
+        return redirect('/proyek/' . $request->id_proyek . '/delivery')->with('success', 'Delivery berhasil ditambahkan!');
+    }
     /**
      * Display the specified resource.
      */
@@ -61,6 +72,10 @@ class DeliveryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delivery = Delivery::findOrFail($id);
+        $id_proyek = $delivery->id_proyek;
+        $delivery->delete();
+
+        return redirect('/proyek/' . $id_proyek . '/delivery')->with('success', 'Delivery berhasil dihapus!');
     }
 }
