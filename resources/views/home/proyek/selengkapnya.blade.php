@@ -12,7 +12,7 @@
                         <a href="{{ route('proyek.lengkapi', $proyek->id) }}" class="btn btn-primary shadow-sm">
                             <i class="bx bx-edit-alt"></i> Lengkapi Data
                         </a>
-                        <a href="/proyek" class="btn btn-secondary shadow-sm">
+                        <a href="/proyek" class="btn btn-outline-secondary shadow-sm">
                             <i class="bx bx-arrow-back"></i> Kembali
                         </a>
                     </div>

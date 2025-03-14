@@ -175,7 +175,7 @@
                             <button type="submit" class="btn btn-success px-4 py-2 shadow-sm me-2">
                                 <i class="bx bx-save"></i> Simpan Perubahan
                             </button>
-                            <a href="javascript:history.back()" class="btn btn-secondary px-4 py-2 shadow-sm">
+                            <a href="javascript:history.back()" class="btn btn-outline-secondary px-4 py-2 shadow-sm">
                                 <i class="bx bx-arrow-back"></i> Kembali
                             </a>
                         </div>
